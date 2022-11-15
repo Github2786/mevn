@@ -67,6 +67,11 @@ if (process.env.NODE_ENV === 'production') {
     app.get('*', (req, res) => {
         res.sendFile(__dirname + '/dist/index.html');
     })
+} else {
+    app.use(express.static(__dirname + '/dist/'));
+    app.get('*', (req, res) => {
+        res.sendFile(__dirname + '/dist/index.html');
+    })
 }
 
 const server = app.listen(port, () => {
